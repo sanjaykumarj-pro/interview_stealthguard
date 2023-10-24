@@ -12,7 +12,8 @@ class Framework{
 
     public function __construct(){
 
-        $this->db=mysqli_connect("localhost","root","","interview_stealthguard");
+        $config = require '../config/database.php';
+        $this->db=mysqli_connect($config['DB_HOST'], $config['DB_USER'], $config['DB_PASS'], $config['DB_NAME']);
         $this->controller_name=$_GET['controller'];
         $this->method_name=$_GET['method'];
         $this->validate_csrf();

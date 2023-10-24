@@ -5,8 +5,9 @@ class db{
     private $db;
     
     public function __construct(){
-
-        $this->db=mysqli_connect("localhost","root","","interview_stealthguard");
+        
+        $config = require '../config/database.php';
+        $this->db=mysqli_connect($config['DB_HOST'], $config['DB_USER'], $config['DB_PASS'], $config['DB_NAME']);
     }
 
     public function migrate() {
